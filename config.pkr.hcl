@@ -23,6 +23,8 @@ source "vultr" "ubuntu" {
 }
 
 build {
+  name = "lume-web-dns-relay"
+
   sources = ["source.vultr.ubuntu"]
   provisioner "shell" {
     script = "build.sh"

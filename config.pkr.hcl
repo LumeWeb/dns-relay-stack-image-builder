@@ -19,7 +19,7 @@ source "vultr" "ubuntu" {
   region_id     = "atl"
   state_timeout = "10m"
   ssh_username  = "root"
-  script_id     = "404fa2d6-ba19-4963-83ee-6485f85afa00"
+  snapshot_description = "lume-web-dns-relay"
 }
 
 build {

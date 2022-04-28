@@ -23,17 +23,23 @@ source "vultr" "ubuntu" {
 }
 
 build {
-  name = "lume-web-dns-relay"
+  name = "vultr"
 
   sources = ["source.vultr.ubuntu"]
-  provisioner "shell" {
-    script = "build.sh"
-  }
+
   provisioner "file" {
-    source      = "provision.sh"
+    source      = "../../provision.sh"
     destination = "/var/lib/cloud/scripts/per-instance/provision.sh"
   }
   provisioner "shell" {
     inline = ["chmod +x /var/lib/cloud/scripts/per-instance/provision.sh"]
+  }
+
+  provisioner "shell" {
+    script = "../../build.sh"
+  }
+
+  provisioner "shell" {
+    script = "post-setup.sh"
   }
 }
